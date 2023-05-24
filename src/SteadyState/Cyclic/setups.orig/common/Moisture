@@ -1,0 +1,13 @@
+#!/usr/bin/env gnuplot
+
+CanopyMass = "< grep 'CanopyMassOut:' log.buoyantBoussinesqSimpleFoam | awk '{print $3}' | tr -d ,"
+
+
+set xlabel 'Iteration'
+set ylabel 'Moisture in Canopy [kg]'
+
+plot CanopyMass w l ls 1 lw 2 title 'CanopyMoistureMass'
+
+
+pause(2)
+reread

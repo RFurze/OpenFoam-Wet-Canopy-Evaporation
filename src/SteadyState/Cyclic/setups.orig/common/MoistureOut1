@@ -1,0 +1,20 @@
+#!/usr/bin/env gnuplot
+
+CanopyMassIn = "< grep 'CanopyMass:' log.buoyantBoussinesqSimpleFoam | awk '{print $3}' | tr -d ,"
+CanopyMassOut = "< grep 'MassOutOfCanopy:' log.buoyantBoussinesqSimpleFoam | awk '{print $3}' | tr -d ,"
+TotalMoisture = "< grep 'TotalMoisture:' log.buoyantBoussinesqSimpleFoam | awk '{print $3}' | tr -d ,"
+n = 10
+
+set tics font "Arial, 12"
+set xlabel 'Iteration' font "Arial, 12"
+set ylabel 'Mass of Moisture per Unit Canopy Area [kg/m2]' font "Arial, 12"
+
+
+plot CanopyMassIn using ($1/n) w l ls 1 lw 3 title 'Mass of moisture within Canopy', \
+CanopyMassOut using ($1/n) w l ls 2 lw 3 title 'Mass of moisture outside of Canopy' , \
+TotalMoisture using ($1/n) w l ls 3 lw 3 title 'Mass of moisture outside of Canopy'
+
+
+pause(2)
+reread
+

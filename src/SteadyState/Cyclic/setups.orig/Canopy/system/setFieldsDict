@@ -1,0 +1,153 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2212                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+defaultFieldValues
+(
+    volScalarFieldValue qPlant 0
+    volScalarFieldValue Cd 0
+    volScalarFieldValue LAD 0
+    volScalarFieldValue Moisture 0
+    volScalarFieldValue sinkfield 0
+);
+
+regions
+(
+
+    boxToCell
+    {
+        box (0 0 7) (300 1 20);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.25
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    
+/*
+    boxToCell
+    {
+        box (0 0 0) (300 1 4);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.01
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    
+    boxToCell
+    {
+        box (0 0 4) (300 1 6);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.03
+            volScalarFieldValue Cd 0.2
+        );
+    }
+
+    boxToCell
+    {
+        box (0 0 6) (300 1 8);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.04
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    
+    boxToCell
+    {
+        box (0 0 8) (300 1 9);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.05
+            volScalarFieldValue Cd 0.2
+        );
+    }
+
+    boxToCell
+    {
+        box (0 0 9) (300 1 11);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.12
+            volScalarFieldValue Cd 0.2
+        );
+    }
+
+    boxToCell
+    {
+        box (0 0 11) (300 1 12);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.24
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    
+    boxToCell
+    {
+        box (0 0 12) (300 1 14);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.3
+            volScalarFieldValue Cd 0.2
+        );
+    }
+
+    boxToCell
+    {
+        box (0 0 14) (300 1 16);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.24
+            volScalarFieldValue Cd 0.2
+        );
+    }
+
+    boxToCell
+    {
+        box (0 0 16) (300 1 17);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.12
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    
+    boxToCell
+    {
+        box (0 0 17) (300 1 19);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.04
+            volScalarFieldValue Cd 0.2
+        );
+    }
+
+    boxToCell
+    {
+        box (0 0 19) (300 1 20);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.02
+            volScalarFieldValue Cd 0.2
+        );
+    }
+*/    
+);
+
+
+// ************************************************************************* //
