@@ -7,7 +7,7 @@ cd "${0%/*}" || exit                                # Run from this directory
 
     # operand setups
     setups="
-    NoCanopy
+    Canopy
     "
 
     # flag to enable computations
