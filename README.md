@@ -1,3 +1,4 @@
+# Wet Canopy Evaporation
 Wet canopy evaporation is the removal of water from tree canopies during precipitation. The simulations here aim to model this phenomena to assess moisture fluxes in 2 dimensions.
 
 - Cases have been developed with OpenFoam v2212
