@@ -1,0 +1,81 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2212                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    p_rgh
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-8;
+        relTol          0.1;
+    }
+    
+    p_rghFinal
+    {
+        $p_rgh;
+        relTol          0;
+    }
+
+    "(U|k|epsilon|omega|T|Moisture)"
+    {
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-8;
+        relTol          0.1;
+    }
+    
+    "(U|k|epsilon|omega|T|Moisture)Final"
+    {
+        $U;
+        relTol          0;
+    }
+    
+
+}
+
+PIMPLE
+{
+    momentumPredictor no;
+    nNonOrthogonalCorrectors 0;
+    nOuterCorrectors 2;
+    nCorrectors     2;
+    pRefCell                 0;
+    pRefValue                0;
+}
+
+relaxationFactors
+{
+   fields
+    {
+        p_rgh                1;
+    }
+    equations
+    {
+        U                    1;
+        "(k|epsilon|omega)"  1;
+        T                    1;
+        p_rgh                1;
+    }
+}
+
+cache
+{
+    grad(U);
+}
+
+
+// ************************************************************************* //
