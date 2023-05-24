@@ -87,6 +87,7 @@ functions
 
 			codeAddSup
 			#{
+			    // Pull mesh fields
 			    const Time& time = mesh().time();
 			    const scalarField& V = mesh_.V();
 			    const vectorField& C = mesh_.C();
@@ -99,13 +100,8 @@ functions
 		            const volScalarField& rhos = mesh_.lookupObject<volScalarField>("rhok");
 
 		            // Define parameters
-		            const scalar startiteration = 0;
-		            const scalar& Hr = 30;
-		            const scalar& cp = 1.005e3;
-		            const scalar& lmb = 2.25e6;
-		            const scalar& psy = 66e-3;
-		            const scalar& Rspec = 461.5;
-		            const scalar& kappa = 0.4;
+		            #include        "/home/rob/Documents/Git/EwC-CFD/WetCanopyEvaporation-CFD/src/Cases/InletOutlet-Dev/IncludeVarsInFile/results/Canopy/system/include/EPMControl"
+		            
 		            double EPMTotal = 0;
 		            double EPMGen = 0;
 		            double CondenseTotal = 0;
@@ -119,8 +115,6 @@ functions
 		                {
 		                    if (LAD[i] != 0)
 		                    {
-		                        // Cell volume specific source
-
 		                        // Sub-calculation 1
 		                        scalar vap_exp = Foam::exp((17.67 * (T[i] - 273.15)) / (T[i] - 273.15 + 243.5));
 		                        scalar sat_vap = 100 * 6.1904 * vap_exp;
@@ -137,42 +131,31 @@ functions
 		                        // Sub-calculation 3
 		                        scalar term3 = lmb * (psy + delta_sat_vap);
 
-		                        // Final calculation of EPMsource[i]
-		                        //Info << "LAD i: = " << i << endl;
-		                        //Info << "LAD: = " << LAD[i] << endl;
-		                        //Info << "q: = " << q[i] << endl;
-		                        //Info << "Vol: = " << V[i] << endl;
-		                        //Info << "ea: = " << vap_pres << endl;
-
 		                        if (vap_pres > sat_vap)
 		                        {
 		                            scalar condense = (vap_pres - sat_vap) * V[i] / (Rspec * T[i]);
-		                            //Info << "Condense: = " << condense << endl;
 		                            EPMsource[i] = condense;
 		                            CondenseTotal += -condense;
 		                        }
 		                        else
 		                        {
-		                            //Info << "Top rhos: = " << rhos[i] << endl;
 		                            scalar source = -LAD[i] * V[i] * (term1 + term2) / term3;
 		                            EPMsource[i] = source;
 		                            EPMGen += -source;
-		                            
 		                        }
-		                        EPMTotal += -EPMsource[i];
-		                        
-		                        //Info << "CanopySource: = " << EPMsource[i] << endl;
+		                        EPMTotal += -EPMsource[i];                        
 		                    }
                
 		                };
+		                
+		                //Sum calculations from parallel cores to a single value
 		                reduce(EPMTotal, sumOp<scalar>());
 		                reduce(EPMGen, sumOp<scalar>());
 		                reduce(CondenseTotal, sumOp<scalar>());
-		                //reduce(ATMExtract, sumOp<scalar>());
+		                
 		                Info << "EPMSourceTotal: = " << EPMTotal << endl;
 		                Info << "EPMGeneration: = " << EPMGen << endl;
-		                Info << "CanopyCondenseTotal: = " << CondenseTotal << endl;
-		                //Info << "Extracted in Atmosphere: = " << ATMExtract << endl;		                		                
+		                Info << "CanopyCondenseTotal: = " << CondenseTotal << endl;        		                
 		            }			    
 			    
 			    
@@ -226,10 +209,7 @@ functions
 		Info<< "CanopyMass: = " << CanopyMassSum << endl
 		    << "MassOutOfCanopy: = " << OutsideCanopyMassSum << endl
    		    << "TotalMoisture: = " << TotalMassSum << endl
-		    << endl;
-	    
-		//volIntegral.write();
-
+		    << endl;   
 	    #}; 
 	}
 }
