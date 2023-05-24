@@ -11,10 +11,10 @@ Wet canopy evaporation is the removal of water from tree canopies during precipi
 
 
 # Steady State
-##Cyclic (Not finalised)
+## Cyclic (Not finalised)
 The cyclic cases attempt to find a steady state solution assuming an infinite canopy in the streamwise direction. The code can be adapted to create a infinite recurrence of patches and clearings to establish the impact of woodland edges.
 
-##Inlet/Outlet (Not finalised)
+## Inlet/Outlet (Not finalised)
 The inlet/outlet cases use an analytical profile for the flow in the atmospheric boundary layer. The approach in this code looks at the flux from an isolated woodland patch.
 
 # Transient (Not finalised)
