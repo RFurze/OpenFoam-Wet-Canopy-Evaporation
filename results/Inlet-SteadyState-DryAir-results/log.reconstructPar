@@ -1,0 +1,362 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _f8e05934-20230403 OPENFOAM=2212 patch=230110 version=2212
+Arch   : "LSB;label=32;scalar=64"
+Exec   : reconstructPar
+Date   : May 24 2023
+Time   : 17:23:16
+Host   : rob
+PID    : 95360
+I/O    : uncollated
+Case   : /home/rob/Documents/Git/EwC-CFD/WetCanopyEvaporation-CFD/src/Cases/InletOutlet-Dev/InitialDomain-IntroMoisture-DryAir/results/Canopy
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+
+
+Reconstructing fields
+region=region0
+
+Time = 1000
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        Cd
+        LAD
+        Moisture
+        T
+        alphat
+        epsilon
+        k
+        nut
+        p
+        p_rgh
+
+    Reconstructing volVectorFields
+
+        U
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 2000
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        Cd
+        LAD
+        Moisture
+        T
+        alphat
+        epsilon
+        k
+        nut
+        p
+        p_rgh
+
+    Reconstructing volVectorFields
+
+        U
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 3000
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        Cd
+        LAD
+        Moisture
+        T
+        alphat
+        epsilon
+        k
+        nut
+        p
+        p_rgh
+
+    Reconstructing volVectorFields
+
+        U
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 4000
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        Cd
+        LAD
+        Moisture
+        T
+        alphat
+        epsilon
+        k
+        nut
+        p
+        p_rgh
+
+    Reconstructing volVectorFields
+
+        U
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 5000
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        Cd
+        LAD
+        Moisture
+        T
+        alphat
+        epsilon
+        k
+        nut
+        p
+        p_rgh
+
+    Reconstructing volVectorFields
+
+        U
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 6000
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        Cd
+        LAD
+        Moisture
+        T
+        alphat
+        epsilon
+        k
+        nut
+        p
+        p_rgh
+
+    Reconstructing volVectorFields
+
+        U
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 7000
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        Cd
+        LAD
+        Moisture
+        T
+        alphat
+        epsilon
+        k
+        nut
+        p
+        p_rgh
+
+    Reconstructing volVectorFields
+
+        U
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 8000
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        Cd
+        LAD
+        Moisture
+        T
+        alphat
+        epsilon
+        k
+        nut
+        p
+        p_rgh
+
+    Reconstructing volVectorFields
+
+        U
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 9000
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        Cd
+        LAD
+        Moisture
+        T
+        alphat
+        epsilon
+        k
+        nut
+        p
+        p_rgh
+
+    Reconstructing volVectorFields
+
+        U
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 10000
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        Cd
+        LAD
+        Moisture
+        T
+        alphat
+        epsilon
+        k
+        nut
+        p
+        p_rgh
+
+    Reconstructing volVectorFields
+
+        U
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+
+End
+

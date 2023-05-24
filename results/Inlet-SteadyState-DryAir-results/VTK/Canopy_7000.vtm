@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<!-- time='7000' -->
+<VTKFile type='vtkMultiBlockDataSet' version='1.0' byte_order='LittleEndian' header_type='UInt64'>
+  <vtkMultiBlockDataSet>
+    <DataSet name='internal' file='Canopy_7000/internal.vtu' />
+    <Block name='boundary'>
+      <DataSet name='inlet' file='Canopy_7000/boundary/inlet.vtp' />
+      <DataSet name='ground' file='Canopy_7000/boundary/ground.vtp' />
+      <DataSet name='top' file='Canopy_7000/boundary/top.vtp' />
+      <DataSet name='outlet' file='Canopy_7000/boundary/outlet.vtp' />
+    </Block>
+  </vtkMultiBlockDataSet>
+  <FieldData>
+    <DataArray type='Float32' Name='TimeValue' NumberOfTuples='1' format='ascii'>
+7000
+    </DataArray>
+  </FieldData>
+</VTKFile>

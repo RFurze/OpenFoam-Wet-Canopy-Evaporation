@@ -1,0 +1,118 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _f8e05934-20230403 OPENFOAM=2212 patch=230110 version=2212
+Arch   : "LSB;label=32;scalar=64"
+Exec   : checkMesh -allTopology -allGeometry -constant
+Date   : May 24 2023
+Time   : 17:09:21
+Host   : rob
+PID    : 82284
+I/O    : uncollated
+Case   : /home/rob/Documents/Git/EwC-CFD/WetCanopyEvaporation-CFD/src/Cases/InletOutlet-Dev/InitialDomain-IntroMoisture-DryAir/results/Canopy
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = constant
+
+Enabling all (cell, face, edge, point) topology checks.
+
+Enabling all geometry checks.
+
+Time = constant
+
+Mesh stats 
+    points:           101202
+    internal points:  0
+    edges:            251801
+    internal edges:   49401
+    internal edges using one boundary point:   0
+    internal edges using two boundary points:  49401
+    faces:            200600
+    internal faces:   99400
+    cells:            50000
+    faces per cell:   6
+    boundary patches: 5
+    point zones:      0
+    face zones:       0
+    cell zones:       0
+
+Overall number of cells of each type:
+    hexahedra:     50000
+    prisms:        0
+    wedges:        0
+    pyramids:      0
+    tet wedges:    0
+    tetrahedra:    0
+    polyhedra:     0
+
+Checking topology...
+    Boundary definition OK.
+    Cell to face addressing OK.
+    Point usage OK.
+    Upper triangular ordering OK.
+    Face vertices OK.
+    Topological cell zip-up check OK.
+    Face-face connectivity OK.
+  <<Writing 4 cells with two non-boundary faces to set twoInternalFacesCells
+    Number of regions: 1 (OK).
+
+Checking patch topology for multiply connected surfaces...
+    Patch               Faces    Points   Surface topology Bounding box
+    inlet               100      202      ok (non-closed singly connected)   (0 0 0) (0 1 500)
+    ground              500      1002     ok (non-closed singly connected)   (0 0 0) (5000 1 0)
+    top                 500      1002     ok (non-closed singly connected)   (0 0 500) (5000 1 500)
+    sides               100000   101202   ok (non-closed singly connected)   (0 0 0) (5000 1 500)
+    outlet              100      202      ok (non-closed singly connected)   (5000 0 0) (5000 1 500)
+
+Checking faceZone topology for multiply connected surfaces...
+    No faceZones found.
+
+Checking basic cellZone addressing...
+    No cellZones found.
+
+Checking basic pointZone addressing...
+    No pointZones found.
+
+Checking geometry...
+    Overall domain bounding box (0 0 0) (5000 1 500)
+    Mesh has 2 geometric (non-empty/wedge) directions (1 0 1)
+    Mesh has 2 solution (non-empty) directions (1 0 1)
+    All edges aligned with or perpendicular to non-empty directions.
+    Boundary openness (1.70155913573e-20 -4.81654672686e-16 -1.55090025392e-21) OK.
+    Max cell openness = 2.17102191172e-16 OK.
+    Max aspect ratio = 195.548269453 OK.
+    Minimum face area = 0.0511382689706. Maximum face area = 314.510274993.  Face area magnitudes OK.
+    Min volume = 0.511382689706. Max volume = 314.510274993.  Total volume = 2500000.  Cell volumes OK.
+    Mesh non-orthogonality Max: 0 average: 0
+    Non-orthogonality check OK.
+    Face pyramids OK.
+    Max skewness = 3.01274651313e-11 OK.
+    Coupled point location match (average 0) OK.
+    Face tets OK.
+    Min/max edge length = 0.0511382689706 31.4510274993 OK.
+    All angles in faces OK.
+    Face flatness (1 = flat, 0 = butterfly) : min = 1  average = 1
+    All face flatness OK.
+    Cell determinant (wellposedness) : minimum: 3.72739355796e-05 average: 0.174421908392
+ ***Cells with small determinant (< 0.001) found, number of cells: 6528
+  <<Writing 6528 under-determined cells to set underdeterminedCells
+    Concave cell check OK.
+    Face interpolation weight : minimum: 0.483789385933 average: 0.491927309897
+    Face interpolation weight check OK.
+    Face volume ratio : minimum: 0.937193797938 average: 0.968723269598
+    Face volume ratio check OK.
+
+Failed 1 mesh checks.
+
+End
+

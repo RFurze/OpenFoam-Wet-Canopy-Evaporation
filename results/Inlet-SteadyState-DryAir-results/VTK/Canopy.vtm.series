@@ -1,0 +1,16 @@
+{
+  "file-series-version" : "1.0",
+  "files" : [
+    { "name" : "Canopy_0.vtm", "time" : 0 },
+    { "name" : "Canopy_1000.vtm", "time" : 1000 },
+    { "name" : "Canopy_2000.vtm", "time" : 2000 },
+    { "name" : "Canopy_3000.vtm", "time" : 3000 },
+    { "name" : "Canopy_4000.vtm", "time" : 4000 },
+    { "name" : "Canopy_5000.vtm", "time" : 5000 },
+    { "name" : "Canopy_6000.vtm", "time" : 6000 },
+    { "name" : "Canopy_7000.vtm", "time" : 7000 },
+    { "name" : "Canopy_8000.vtm", "time" : 8000 },
+    { "name" : "Canopy_9000.vtm", "time" : 9000 },
+    { "name" : "Canopy_10000.vtm", "time" : 10000 }
+  ]
+}
