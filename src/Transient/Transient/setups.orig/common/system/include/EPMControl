@@ -5,33 +5,14 @@
 |   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
-FoamFile
-{
-    version     2.0;
-    format      ascii;
-    class       dictionary;
-    object      setFieldsDict;
-}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-defaultFieldValues
-(
-    volScalarFieldValue Cd 0
-    volScalarFieldValue LAD 0
-    volScalarFieldValue Moisture 0
-);
-
-regions
-(
-    boxToCell
-    {
-        box (1000 0 7) (1300 1 20);
-        fieldValues
-        (
-            volScalarFieldValue LAD 0.25
-            volScalarFieldValue Cd 0.2
-        );
-    }
-);   
+const scalar startiteration = 0;
+const scalar& Hr = 30;
+const scalar& cp = 1.005e3;
+const scalar& lmb = 2.25e6;
+const scalar& psy = 66e-3;
+const scalar& Rspec = 461.5;
+const scalar& kappa = 0.4;
+const scalar& bkgrdMoisture = 0;
 
 // ************************************************************************* //
