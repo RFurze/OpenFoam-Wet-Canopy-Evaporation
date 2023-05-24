@@ -1,0 +1,219 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2212                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Make sure all utilities know specialised models
+libs            (atmosphericModels);
+
+application     buoyantBoussinesqSimpleFoam;
+
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         10000;
+
+deltaT          1;
+
+writeControl    timeStep;
+
+writeInterval   1000;
+
+purgeWrite      0;
+
+writeFormat     binary;
+
+writePrecision  12;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable false;
+
+allowSystemOperations 1;
+
+functions
+{
+	Moisture
+	{
+	    type                scalarTransport;
+	    libs                (solverFunctionObjects);
+	    outputControl       outputTime;
+	    active              true;
+	    autoSchemes         false;
+	    nCorr               0;
+	    field               Moisture;
+	    resetOnStartUp      false;
+	    write           	true;
+
+	    fvOptions
+	    {
+		MoistureSource
+		{
+		    type            scalarCodedSource;
+		    name	    sourceTime;
+		    scalarCodedSourceCoeffs
+		    {
+		        selectionMode   all;
+		        volumeMode      specific;
+		        fields          (Moisture);
+		        name            sourceTime;
+		        codeInclude
+		        #{
+		            #include "fvCFD.H"
+		            #include "fvc.H"
+		        #};
+
+			codeCorrect
+			#{
+			#};
+
+			codeAddSup
+			#{
+			    // Pull mesh fields
+			    const Time& time = mesh().time();
+			    const scalarField& V = mesh_.V();
+			    const vectorField& C = mesh_.C();
+		            const volVectorField& U = mesh().lookupObject<volVectorField>("U");
+			    			    		    
+		            // Pull leaf area density, Temperature, Moisture, and density fields
+		            const volScalarField& LAD = mesh_.lookupObject<volScalarField>("LAD");
+		            const volScalarField& T = mesh_.lookupObject<volScalarField>("T");
+		            const volScalarField& q = mesh_.lookupObject<volScalarField>("Moisture");
+		            const volScalarField& rhos = mesh_.lookupObject<volScalarField>("rhok");
+
+		            // Define parameters
+		            #include        "/home/rob/Documents/Git/EwC-CFD/WetCanopyEvaporation-CFD/src/Cases/InletOutlet-Dev/IncludeVarsInFile/results/Canopy/system/include/EPMControl"
+		            
+		            double EPMTotal = 0;
+		            double EPMGen = 0;
+		            double CondenseTotal = 0;
+		            double ATMExtract = 0;
+			    
+			    scalarField& EPMsource = eqn.source();
+			    
+		            if (time.value() >= startiteration)
+		            {
+		                forAll(V, i)
+		                {
+		                    if (LAD[i] != 0)
+		                    {
+		                        // Sub-calculation 1
+		                        scalar vap_exp = Foam::exp((17.67 * (T[i] - 273.15)) / (T[i] - 273.15 + 243.5));
+		                        scalar sat_vap = 100 * 6.1904 * vap_exp;
+		                        scalar vap_pres = Rspec * T[i] * q[i] / V[i];
+		                        scalar delta_sat_vap = 100 * 26170.1 * vap_exp / pow((T[i] - 273.15 + 243.5), 2);
+		                        scalar ra_m = pow(Foam::log(C[i].z() / 2.0), 2.0) / (kappa * kappa * mag(U[i]));
+		                        // scalar ra_m = C[i].z();
+
+		                        scalar term1 = Hr * delta_sat_vap;
+
+		                        // Sub-calculation 2
+		                        scalar term2 = cp * rhos[i] * (sat_vap - vap_pres) / ra_m;
+
+		                        // Sub-calculation 3
+		                        scalar term3 = lmb * (psy + delta_sat_vap);
+
+		                        if (vap_pres > sat_vap)
+		                        {
+		                            scalar condense = (vap_pres - sat_vap) * V[i] / (Rspec * T[i]);
+		                            EPMsource[i] = condense;
+		                            CondenseTotal += -condense;
+		                        }
+		                        else
+		                        {
+		                            scalar source = -LAD[i] * V[i] * (term1 + term2) / term3;
+		                            EPMsource[i] = source;
+		                            EPMGen += -source;
+		                        }
+		                        EPMTotal += -EPMsource[i];                        
+		                    }
+               
+		                };
+		                
+		                //Sum calculations from parallel cores to a single value
+		                reduce(EPMTotal, sumOp<scalar>());
+		                reduce(EPMGen, sumOp<scalar>());
+		                reduce(CondenseTotal, sumOp<scalar>());
+		                
+		                Info << "EPMSourceTotal: = " << EPMTotal << endl;
+		                Info << "EPMGeneration: = " << EPMGen << endl;
+		                Info << "CanopyCondenseTotal: = " << CondenseTotal << endl;        		                
+		            }			    
+			    
+			    
+			#};
+
+			codeConstrain
+			#{
+			#};
+		    }
+	    	}
+	
+	}
+}
+
+
+	CanopyMass
+	{
+	    type            coded;
+	    libs            ("libutilityFunctionObjects.so");
+	    name            CanopyMass;
+	    writeControl    timeStep;
+
+	    codeWrite
+	    #{
+		const scalarField& V = mesh().V();
+		const volScalarField& q = mesh().lookupObject<volScalarField>("Moisture");
+		const volScalarField& LAD = mesh().lookupObject<volScalarField>("LAD");
+
+                double CanopyMassSum = 0;
+                double TotalMassSum = 0;
+                double OutsideCanopyMassSum = 0;
+                scalar sum = gSum(q);
+	        forAll (V, cellI)
+	        {
+	         
+	         TotalMassSum += q[cellI];
+	         
+	         if (LAD[cellI] != 0) {	
+	    	   CanopyMassSum += q[cellI];
+	    	 }
+	    	 else {
+	    	 OutsideCanopyMassSum += q[cellI];
+	    	 }  	 
+	        }
+	        
+	        //Sync the summation across all processors
+	        reduce(CanopyMassSum, sumOp<scalar>());
+       	        reduce(OutsideCanopyMassSum, sumOp<scalar>());
+	        reduce(TotalMassSum, sumOp<scalar>());
+	        
+		Info<< "CanopyMass: = " << CanopyMassSum << endl
+		    << "MassOutOfCanopy: = " << OutsideCanopyMassSum << endl
+   		    << "TotalMoisture: = " << TotalMassSum << endl
+		    << endl;   
+	    #}; 
+	}
+}
+
+
+
+// ************************************************************************* //
