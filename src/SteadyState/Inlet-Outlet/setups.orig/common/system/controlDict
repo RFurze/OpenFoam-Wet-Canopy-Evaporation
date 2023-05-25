@@ -25,7 +25,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         10000;
+endTime         18000;
 
 deltaT          1;
 
@@ -99,7 +99,7 @@ functions
 		            const volScalarField& rhos = mesh_.lookupObject<volScalarField>("rhok");
 
 		            // Define parameters
-		            const scalar startiteration = 0;
+		            const scalar startiteration = 8000;
 		            const scalar& Hr = 30;
 		            const scalar& cp = 1.005e3;
 		            const scalar& lmb = 2.25e6;

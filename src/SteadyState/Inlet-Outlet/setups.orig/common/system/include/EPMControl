@@ -6,7 +6,7 @@
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 
-const scalar startiteration = 0;
+const scalar startiteration = 8000;
 const scalar& Hr = 30;
 const scalar& cp = 1.005e3;
 const scalar& lmb = 2.25e6;

@@ -34,13 +34,13 @@ boundaryField
     inlet
     {
         type            inletOutlet;
-        inletValue      uniform 0.0;
+        inletValue      uniform 0.09;
     }
 
     outlet
     {
         type            inletOutlet;
-        inletValue      uniform 0.0;
+        inletValue      uniform 0.09;
     }
     
     sides

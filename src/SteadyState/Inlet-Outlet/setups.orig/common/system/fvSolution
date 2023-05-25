@@ -53,15 +53,15 @@ relaxationFactors
 {
     fields
     {
-    p_rgh		     0.6;
+    p_rgh		     0.5;
     }
     
     equations
     {
-        U                    0.7;
+        U                    0.6;
         "(k|epsilon|omega)"  0.6;
         T                    0.6;
-        p_rgh                0.6;
+        p_rgh                0.5;
         Moisture	     0.9;
     }
 }
