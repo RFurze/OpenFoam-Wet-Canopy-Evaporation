@@ -5,6 +5,5 @@ cd "${0%/*}" || exit                                # Run from this directory
 
 rm -rf setups
 rm -rf results
-rm -rf plots
 
 #------------------------------------------------------------------------------
