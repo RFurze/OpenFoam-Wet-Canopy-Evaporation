@@ -11,6 +11,8 @@ Wet canopy evaporation is the removal of water from tree canopies during precipi
 
 Convergence issues occur if a coarse leaf area density field is defined. A python code has been included in /Utilities/ for creating a file in the required format to be placed in /setups.orig/Canopy/system/setFieldsDict.
 
+Two files, "Residuals" and "EPMGen" will be created at runtime in the results directory. These can be executed with gnuplot for monitoring residuals and the total moisture generation.
+
 
 
 
