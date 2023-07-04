@@ -102,17 +102,16 @@ functions
 			    const volScalarField& rhos = mesh_.lookupObject<volScalarField>("rhok");
 
 			    // Define parameters
-			    const startiteration = 0;     //For temporal solver - iteration to commence evaporation
-			    const scalar& Hr = 30;        //Ambient radiation
-			    const scalar& T_ground = 284; //Ground temperature
-			    const scalar& cd = 0.2;       //Canopy drag coefficent
-			    const scalar& cp = 1.005e3;   //Specific heat capacity
-			    const scalar& lmb = 2.25e6;   //Latent heat of vapourisation
-			    const scalar& H = 20;         //Canopy Height (To update to read automatically)
-			    const scalar& psy = 66;       //Psychrometric constant
-			    const scalar& Rspec = 461.5;  //Specific gas constant
-			    const scalar& kappa = 0.4;    //von Karman constant
-			    const scalar& RH = 0.9;       //Background relative humidity 
+			    const scalar startiteration = 0;
+			    const scalar& Hr = 30;
+			    const scalar& cd = 0.2;
+			    const scalar& cp = 1.005e3;
+			    const scalar& lmb = 2.25e6;
+			    const scalar& H = 20;
+			    const scalar& psy = 66;
+			    const scalar& Rspec = 461.5;
+			    const scalar& kappa = 0.4;
+    			    const scalar& RH = 0.8;
 			    double EPMGen = 0;
 			    scalar bkgq = RH * 610.94 * Foam::exp((17.27 * (284 - 273.15)) / (284 - 29.65))/(Rspec*284);
 
@@ -182,6 +181,7 @@ functions
 	
 	}
 }
+
 }
 
 
