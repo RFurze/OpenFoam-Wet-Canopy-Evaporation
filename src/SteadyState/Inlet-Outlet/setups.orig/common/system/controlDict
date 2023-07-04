@@ -1,0 +1,174 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2212                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Make sure all utilities know specialised models
+libs            (atmosphericModels);
+
+application     buoyantBoussinesqSimpleFoam;
+
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         8000;
+
+deltaT          1;
+
+writeControl    timeStep;
+
+writeInterval   10000;
+
+purgeWrite      0;
+
+writeFormat     binary;
+
+writePrecision  12;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable false;
+
+allowSystemOperations 1;
+
+functions
+{
+
+
+	Moisture
+	{
+	    type                scalarTransport;
+	    libs                (solverFunctionObjects);
+	    outputControl       outputTime;
+	    active              true;
+	    autoSchemes         false;
+	    nCorr               0;
+	    field               Moisture;
+	    resetOnStartUp      false;
+	    write           	true;
+
+	    fvOptions
+	    {
+		MoistureSource
+		{
+		    type            scalarCodedSource;
+		    name	    sourceTime;
+		    scalarCodedSourceCoeffs
+		    {
+		        selectionMode   all;
+		        volumeMode      specific;
+		        fields          (Moisture);
+		        name            sourceTime;
+		        codeInclude
+		        #{
+		            #include "fvCFD.H"
+		            #include "fvc.H"
+		        #};
+
+			codeCorrect
+			#{
+			#};
+
+			codeAddSup
+			#{
+			    #include "EPMParameters"
+			    const Time& time = mesh().time();
+			    const scalarField& V = mesh_.V();
+			    const vectorField& C = mesh_.C();
+			    const volVectorField& U = mesh().lookupObject<volVectorField>("U");
+
+			    // Pull leaf area density, Temperature, Moisture, and density fields
+			    const volScalarField& LAD = mesh_.lookupObject<volScalarField>("LAD");
+			    const volScalarField& T = mesh_.lookupObject<volScalarField>("T");
+			    const volScalarField& q = mesh_.lookupObject<volScalarField>("Moisture");
+			    const volScalarField& rhos = mesh_.lookupObject<volScalarField>("rhok");
+
+			    // Define parameters
+			    double EPMGen = 0;
+			    scalar bkgq = RH * 610.94 * Foam::exp((17.27 * (284 - 273.15)) / (284 - 29.65))/(Rspec*284);
+
+			    scalarField& EPMsource = eqn.source();
+
+			    if (time.value() >= startiteration) {
+				forAll(V, i)
+				{
+				    if (LAD[i] != 0 && C[i].x() > 199.9 && C[i].x() < 800.1) {
+				    scalar vap_exp = Foam::exp((17.27 * (T[i] - 273.15)) / (T[i] - 29.65));
+				    scalar sat_vap = 610.94 * vap_exp;
+				    scalar vap_pres = Rspec * T[i] * (q[i] + bkgq * V[i]) / V[i];
+				    
+					if (vap_pres > sat_vap) {
+					    scalar condense = (vap_pres - sat_vap) * V[i] / (Rspec * T[i]);
+					    EPMsource[i] = condense;
+					} else if (vap_pres < sat_vap) {
+					    // Sub-calculation 1
+					    scalar delta_sat_vap = 2.56915e6 * vap_exp / pow((T[i] - 29.65), 2);
+					    scalar ra_m = 1/(2*LAD[i]* cd * mag(U[i]));
+					    // scalar ra_m = C[i].z();
+
+					    scalar term1 = Hr * delta_sat_vap;
+
+					    // Sub-calculation 2
+					    scalar term2 = cp * rhos[i] * (sat_vap - vap_pres) / ra_m;
+
+					    // Sub-calculation 3
+					    scalar term3 = lmb * (psy + delta_sat_vap);
+
+					    scalar EPM = -LAD[i] * V[i] * (term1 + term2) / term3;
+
+					    scalar NewVapPres = Rspec * T[i] * (-EPM + q[i] + bkgq * V[i]) / V[i];
+
+					    scalar source;
+
+					    if (NewVapPres > sat_vap && sat_vap < vap_pres) {
+						source = (sat_vap * V[i] / (Rspec * T[i])) - (q[i] + bkgq * V[i]);
+					    } else {
+						source = EPM;
+					    }
+					    EPMsource[i] = source;
+					    EPMGen += -source;
+
+					} else {
+					    EPMsource[i] = 0;
+					}
+				    }
+				     else {
+					    EPMsource[i] = 0;
+					}
+				    }
+				
+				//reduce(EPMTotal, sumOp<scalar>());
+				reduce(EPMGen, sumOp<scalar>());
+
+				//Info << "EPMSourceTotal: = " << EPMTotal << endl;
+				Info << "EPMGeneration: = " << EPMGen << endl;
+			    }
+			#};
+
+			codeConstrain
+			#{
+			#};
+		    }
+	    	}
+	
+	}
+}
+}

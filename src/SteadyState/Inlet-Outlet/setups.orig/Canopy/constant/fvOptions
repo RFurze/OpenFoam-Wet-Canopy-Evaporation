@@ -1,0 +1,32 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2212                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+atmPlantCanopyUSource1
+{
+    type            atmPlantCanopyUSource;
+    selectionMode   all;
+}
+
+atmPlantCanopyTurbSource1
+{
+    type            atmPlantCanopyTurbSource;
+    selectionMode   all;
+    rho             rho;
+}
+
+
+// ************************************************************************* //

@@ -1,0 +1,938 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2212                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+defaultFieldValues
+(
+    volScalarFieldValue Cd 0
+    volScalarFieldValue LAD 0
+    volScalarFieldValue Moisture 0
+);
+
+regions
+(
+    boxToCell
+    {
+        box (0 0 0) (2000 1 0.25);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.5
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    
+    boxToCell
+    {
+        box (200 0 0.500) (800 1 0.695);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.014 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 0.695) (800 1 0.890);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.015 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 0.890) (800 1 1.085);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.017 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 1.085) (800 1 1.280);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.018 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 1.280) (800 1 1.475);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.020 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 1.475) (800 1 1.670);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.022 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 1.670) (800 1 1.865);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.024 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 1.865) (800 1 2.060);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.026 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 2.060) (800 1 2.255);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.028 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 2.255) (800 1 2.450);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.031 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 2.450) (800 1 2.645);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.033 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 2.645) (800 1 2.840);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.036 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 2.840) (800 1 3.035);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.039 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 3.035) (800 1 3.230);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.042 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 3.230) (800 1 3.425);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.045 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 3.425) (800 1 3.620);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.049 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 3.620) (800 1 3.815);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.053 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 3.815) (800 1 4.010);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.057 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 4.010) (800 1 4.205);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.061 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 4.205) (800 1 4.400);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.065 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 4.400) (800 1 4.595);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.070 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 4.595) (800 1 4.790);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.074 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 4.790) (800 1 4.985);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.079 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 4.985) (800 1 5.180);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.084 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 5.180) (800 1 5.375);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.090 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 5.375) (800 1 5.570);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.095 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 5.570) (800 1 5.765);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.101 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 5.765) (800 1 5.960);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.107 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 5.960) (800 1 6.155);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.113 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 6.155) (800 1 6.350);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.119 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 6.350) (800 1 6.545);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.125 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 6.545) (800 1 6.740);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.132 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 6.740) (800 1 6.935);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.138 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 6.935) (800 1 7.130);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.145 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 7.130) (800 1 7.325);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.152 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 7.325) (800 1 7.520);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.159 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 7.520) (800 1 7.715);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.166 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 7.715) (800 1 7.910);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.173 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 7.910) (800 1 8.105);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.180 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 8.105) (800 1 8.300);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.187 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 8.300) (800 1 8.495);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.194 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 8.495) (800 1 8.690);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.201 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 8.690) (800 1 8.885);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.208 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 8.885) (800 1 9.080);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.215 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 9.080) (800 1 9.275);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.221 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 9.275) (800 1 9.470);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.228 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 9.470) (800 1 9.665);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.235 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 9.665) (800 1 9.860);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.241 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 9.860) (800 1 10.055);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.247 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 10.055) (800 1 10.250);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.253 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 10.250) (800 1 10.445);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.258 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 10.445) (800 1 10.640);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.264 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 10.640) (800 1 10.835);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.269 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 10.835) (800 1 11.030);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.273 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 11.030) (800 1 11.225);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.278 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 11.225) (800 1 11.420);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.282 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 11.420) (800 1 11.615);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.286 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 11.615) (800 1 11.810);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.289 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 11.810) (800 1 12.005);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.292 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 12.005) (800 1 12.200);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.294 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 12.200) (800 1 12.395);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.296 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 12.395) (800 1 12.590);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.298 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 12.590) (800 1 12.785);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.299 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 12.785) (800 1 12.980);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.300 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 12.980) (800 1 13.175);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.300 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 13.175) (800 1 13.370);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.300 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 13.370) (800 1 13.565);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.299 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 13.565) (800 1 13.760);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.298 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 13.760) (800 1 13.955);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.297 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 13.955) (800 1 14.150);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.295 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 14.150) (800 1 14.345);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.292 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 14.345) (800 1 14.540);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.289 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 14.540) (800 1 14.735);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.286 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 14.735) (800 1 14.930);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.283 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 14.930) (800 1 15.125);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.279 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 15.125) (800 1 15.320);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.274 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 15.320) (800 1 15.515);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.270 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 15.515) (800 1 15.710);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.265 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 15.710) (800 1 15.905);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.259 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 15.905) (800 1 16.100);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.254 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 16.100) (800 1 16.295);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.248 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 16.295) (800 1 16.490);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.242 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 16.490) (800 1 16.685);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.236 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 16.685) (800 1 16.880);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.229 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 16.880) (800 1 17.075);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.223 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 17.075) (800 1 17.270);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.216 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 17.270) (800 1 17.465);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.209 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 17.465) (800 1 17.660);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.202 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 17.660) (800 1 17.855);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.195 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 17.855) (800 1 18.050);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.188 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 18.050) (800 1 18.245);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.181 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 18.245) (800 1 18.440);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.174 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 18.440) (800 1 18.635);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.167 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 18.635) (800 1 18.830);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.160 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 18.830) (800 1 19.025);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.153 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 19.025) (800 1 19.220);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.146 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 19.220) (800 1 19.415);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.140 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 19.415) (800 1 19.610);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.133 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 19.610) (800 1 19.805);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.127 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+    boxToCell
+    {
+        box (200 0 19.805) (800 1 20.000);
+        fieldValues
+        (
+            volScalarFieldValue LAD 0.120 
+            volScalarFieldValue Cd 0.2
+        );
+    }
+);
+
+// ************************************************************************* //

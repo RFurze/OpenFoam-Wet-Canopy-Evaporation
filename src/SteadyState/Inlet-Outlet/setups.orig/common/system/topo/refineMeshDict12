@@ -1,0 +1,40 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2212                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+    class           dictionary;
+    object          refineMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+//Target cell set for refinement
+set             c12;
+
+coordinateSystem global;
+
+//Define normal directions for refinement
+globalCoeffs
+{
+    tan1            (1 0 0);
+    tan2            (0 0 1);
+}
+
+directions      (
+    tan2
+    tan1
+);
+
+useHexTopology  yes;
+
+geometricCut    no;
+
+writeMesh       no;
+
+// ************************************************************************* //

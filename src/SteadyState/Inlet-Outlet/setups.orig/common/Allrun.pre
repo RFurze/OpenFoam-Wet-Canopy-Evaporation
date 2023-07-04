@@ -1,0 +1,57 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+restore0Dir
+
+if [ ! -d constant/polyMesh ]
+then  
+    runApplication blockMesh
+    
+	runApplication -s 1 topoSet -dict system/topo/topoSetDict1
+	runApplication -s 1 refineMesh -dict system/topo/refineMeshDict1 -overwrite
+	runApplication -s 2 topoSet -dict system/topo/topoSetDict2
+	runApplication -s 2 refineMesh -dict system/topo/refineMeshDict2 -overwrite
+	runApplication -s 3 topoSet -dict system/topo/topoSetDict3 
+	runApplication -s 3 refineMesh -dict system/topo/refineMeshDict3 -overwrite
+	runApplication -s 4 topoSet -dict system/topo/topoSetDict4 
+	runApplication -s 4 refineMesh -dict system/topo/refineMeshDict4 -overwrite
+	runApplication -s 5 topoSet -dict system/topo/topoSetDict5 
+	runApplication -s 5 refineMesh -dict system/topo/refineMeshDict5 -overwrite
+	runApplication -s 6 topoSet -dict system/topo/topoSetDict6 
+	runApplication -s 6 refineMesh -dict system/topo/refineMeshDict6 -overwrite
+	runApplication -s 7 topoSet -dict system/topo/topoSetDict7 
+	runApplication -s 7 refineMesh -dict system/topo/refineMeshDict7 -overwrite
+	runApplication -s 8 topoSet -dict system/topo/topoSetDict8 
+	runApplication -s 8 refineMesh -dict system/topo/refineMeshDict8 -overwrite
+	runApplication -s 9 topoSet -dict system/topo/topoSetDict9 
+	runApplication -s 9 refineMesh -dict system/topo/refineMeshDict9 -overwrite
+	runApplication -s 10 topoSet -dict system/topo/topoSetDict10 
+	runApplication -s 10 refineMesh -dict system/topo/refineMeshDict10 -overwrite
+	runApplication -s 11 topoSet -dict system/topo/topoSetDict11 
+	runApplication -s 11 refineMesh -dict system/topo/refineMeshDict11 -overwrite
+	runApplication -s 12 topoSet -dict system/topo/topoSetDict12 
+	runApplication -s 12 refineMesh -dict system/topo/refineMeshDict12 -overwrite
+	runApplication -s 13 topoSet -dict system/topo/topoSetDict13 
+	runApplication -s 13 refineMesh -dict system/topo/refineMeshDict13 -overwrite
+
+	runApplication -s 14 topoSet -dict system/topo/topoSetDict2 
+	runApplication -s 14 refineMesh -dict system/topo/refineMeshDict14 -overwrite
+	runApplication -s 15 topoSet -dict system/topo/topoSetDict4 
+	runApplication -s 15 refineMesh -dict system/topo/refineMeshDict15 -overwrite
+	runApplication -s 16 topoSet -dict system/topo/topoSetDict5 
+	runApplication -s 16 refineMesh -dict system/topo/refineMeshDict16 -overwrite
+	runApplication -s 17 topoSet -dict system/topo/topoSetDict6 
+	runApplication -s 17 refineMesh -dict system/topo/refineMeshDict17 -overwrite
+	runApplication -s 18 topoSet -dict system/topo/topoSetDict9 
+	runApplication -s 18 refineMesh -dict system/topo/refineMeshDict18 -overwrite
+	runApplication -s 19 topoSet -dict system/topo/topoSetDict13 
+	runApplication -s 19 refineMesh -dict system/topo/refineMeshDict19 -overwrite
+
+    runApplication renumberMesh  -constant -overwrite
+
+    runApplication checkMesh -allTopology -allGeometry -constant
+fi
+
+#------------------------------------------------------------------------------

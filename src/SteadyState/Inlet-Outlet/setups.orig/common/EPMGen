@@ -1,0 +1,11 @@
+#!/usr/bin/env gnuplot
+
+CanopyMassIn = "< grep 'EPMGeneration:' log.buoyantBoussinesqSimpleFoam | awk '{print $3}' | tr -d ,"
+
+n = 1
+Iteration(x) = x
+set logscale x
+
+plot CanopyMassIn using ($1/n) w l ls 2 lw 3 title 'TotalMoisture' 
+pause (2)
+reread
