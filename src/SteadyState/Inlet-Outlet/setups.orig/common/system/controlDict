@@ -31,7 +31,7 @@ deltaT          1;
 
 writeControl    timeStep;
 
-writeInterval   10000;
+writeInterval   2000;
 
 purgeWrite      0;
 
@@ -39,7 +39,7 @@ writeFormat     binary;
 
 writePrecision  12;
 
-writeCompression off;
+writeCompression on;
 
 timeFormat      general;
 
@@ -89,6 +89,7 @@ functions
 
 			codeAddSup
 			#{
+			
 			    const Time& time = mesh().time();
 			    const scalarField& V = mesh_.V();
 			    const vectorField& C = mesh_.C();
@@ -182,3 +183,7 @@ functions
 	}
 }
 }
+
+
+
+// ************************************************************************* //
