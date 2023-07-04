@@ -1,5 +1,0 @@
-#!/usr/bin/env gnuplot
-
-f(x) = a + b*x
-
-fit f(x) 'MoistureOutdata.dat' using 1:2 via a, b
