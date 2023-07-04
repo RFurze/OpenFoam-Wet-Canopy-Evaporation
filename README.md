@@ -1,7 +1,7 @@
 # Wet Canopy Evaporation
 Wet canopy evaporation is the removal of water from tree canopies during precipitation. The simulations here aim to model this phenomena to assess moisture fluxes in 2 dimensions.
 
-- Cases have been developed with OpenFoam v2212
+- Cases have been developed with OpenFoam v2212 (Code is compatible with v2006 but all references to 'LAD' and 'Cd' will need changing to 'leafAreaDensity' and 'plantCd' respectively).
 - All cases here use RANS turbulence modelling with a k-epsilon closure
 - An incompressible single phase solver has been used: buoyantBoussinesqSimpleFoam and buoyantBoussinesqPimpleFoam
 - Water is treated as a non reactive scalar tracer
