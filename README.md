@@ -9,13 +9,16 @@ Wet canopy evaporation is the removal of water from tree canopies during precipi
 - Moisture is generated as a source activated by the presence of a leaf area density
 - Buoyancy effects on the moisture are not modelled, turbulent transport is considered the dominant effect
 
+Convergence issues occur if a coarse leaf area density field is defined. A python code has been included in /Utilities/ for creating a file in the required format to be placed in /setups.orig/Canopy/system/setFieldsDict.
+
+
 
 # Steady State
-## Cyclic (Not finalised)
-The cyclic cases attempt to find a steady state solution assuming an infinite canopy in the streamwise direction. The code can be adapted to create a infinite recurrence of patches and clearings to establish the impact of woodland edges.
-
-## Inlet/Outlet (Not finalised)
+## Inlet/Outlet (2D)
 The inlet/outlet cases use an analytical profile for the flow in the atmospheric boundary layer. The approach in this code looks at the flux from an isolated woodland patch.
+
+## Cyclic (1D)
+The cyclic cases attempt to find a steady state solution assuming an infinite canopy in the streamwise direction. The code can be adapted to create a infinite recurrence of patches and clearings to establish the impact of woodland edges.
 
 # Transient (Not finalised)
 The transient simulation uses the profiles from a steady state simulation in the absence of a woodland to initialise the flow for a transient solver.
